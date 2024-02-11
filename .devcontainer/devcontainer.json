@@ -19,7 +19,7 @@
 	"workspaceFolder": "/workspace/local",
 
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": ". /workspace/local/ros2_entrypoint.sh",
+	"postCreateCommand": "chmod +x /workspace/local/ros2_entrypoint.sh && . /workspace/local/ros2_entrypoint.sh",
 
 	"postStartCommand": ". /workspace/local/ros2_humble/install/setup.sh",
 
