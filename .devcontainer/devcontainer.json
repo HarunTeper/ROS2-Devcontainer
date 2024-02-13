@@ -6,21 +6,22 @@
 		// Sets the run context to one level up instead of the .devcontainer folder.
 		"context": "..",
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
+		"args": { "VARIANT": "jammy" }
 	},
-
-	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/local,type=bind,consistency=cached",
-	"workspaceFolder": "/workspace/local",
-
-	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "chmod +x /workspace/local/ros2_entrypoint.sh && . /workspace/local/ros2_entrypoint.sh",
-
-	// "postStartCommand": ". /workspace/local/ros2_humble/install/setup.sh",
-
-	// "postAttachCommand": ". /workspace/local/ros2_humble/install/setup.sh",
-
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "vscode",
+
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/home/vscode/workspace",
+
+	// Uncomment the next line to run commands after the container is created.
+	"postCreateCommand": "chmod 777 /home/vscode/workspace && . ~/workspace/ros2_entrypoint.sh",
+
+	"postStartCommand": ". ~/workspace/ros2_humble/install/setup.sh",
+
+	"postAttachCommand": ". ~/workspace/ros2_humble/install/setup.sh",
+
 
 	//set network to host
 	"runArgs": ["--network=host"],
