@@ -9,25 +9,26 @@
 		"dockerfile": "Dockerfile"
 	},
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/local,type=bind,consistency=cached",
 	"workspaceFolder": "/workspace/local",
 
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "chmod +x /workspace/local/ros2_entrypoint.sh && . /workspace/local/ros2_entrypoint.sh",
+	// "postCreateCommand": "chmod +x /workspace/local/ros2_entrypoint.sh && . /workspace/local/ros2_entrypoint.sh",
 
-	"postStartCommand": ". /workspace/local/ros2_humble/install/setup.sh",
+	// "postStartCommand": ". /workspace/local/ros2_humble/install/setup.sh",
 
-	"postAttachCommand": ". /workspace/local/ros2_humble/install/setup.sh",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
+	// "postAttachCommand": ". /workspace/local/ros2_humble/install/setup.sh",
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "vscode"
+	"remoteUser": "vscode",
+
+	//set network to host
+	"runArgs": ["--network=host"],
+
+	//install extensions
+	"customizations": {
+		"extensions": [
+			"llvm-vs-code-extensions.vscode-clangd"
+		]
+	}
 }
