@@ -9,10 +9,10 @@ sudo rosdep init
 rosdep update
 rosdep install --rosdistro humble --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 colcon build --symlink-install
-echo ". /workspace/local/ros2_humble/install/setup.sh" >> ~/.bashrc
+echo ". ~/workspace/ros2_humble/install/setup.sh" >> ~/.bashrc
 
 # source ros2 humble and go to the workspace
-. /workspace/local/ros2_humble/install/setup.sh
+. ~/workspace/ros2_humble/install/setup.sh
 cd ..
 
 # # installation of other ros2 packages
