@@ -1,7 +1,8 @@
 
 # installation of ros2 humble
-mkdir -p ros2_humble/src
+mkdir ros2_humble
 cd ros2_humble
+mkdir src
 vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
 sudo apt -y upgrade
 sudo rosdep init
