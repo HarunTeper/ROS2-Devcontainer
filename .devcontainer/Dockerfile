@@ -45,16 +45,16 @@ RUN apt-get update && apt-get install -y \
     ros-dev-tools
 
 # install ROS2
-RUN mkdir -p /home/vscode/workspace/ros2_humble/src && \
-    cd /home/vscode/workspace/ros2_humble && \
+RUN mkdir -p /home/vscode/ros2_humble/src && \
+    cd /home/vscode/ros2_humble && \
     vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src && \
     sudo rosdep init && \
     rosdep update && \
     apt-get update && \
     apt-get -y upgrade && \
-    cd /home/vscode/workspace/ros2_humble && \
+    cd /home/vscode/ros2_humble && \
     rosdep install --rosdistro humble --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" && \
-    cd /home/vscode/workspace/ros2_humble && \
+    cd /home/vscode/ros2_humble && \
     colcon build --symlink-install
 
 # --- Set up user ---
@@ -63,7 +63,7 @@ RUN mkdir -p /home/vscode/workspace/ros2_humble/src && \
 USER vscode
 
 # source ROS2 setup file
-RUN echo ". /home/vscode/workspace/ros2_humble/install/setup.sh" >> ~/.bashrc
+RUN echo ". /home/vscode/ros2_humble/install/setup.sh" >> ~/.bashrc
 
 # configure environment variables
 ENV DISPLAY=unix:1
