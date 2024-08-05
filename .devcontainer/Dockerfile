@@ -57,6 +57,12 @@ RUN mkdir -p /home/vscode/ros2_humble/src && \
     cd /home/vscode/ros2_humble && \
     colcon build --symlink-install
 
+# --- Install DevTools ---
+
+RUN apt-get update && \
+    apt-get -y install clangd clang-format clang-tidy cppcheck && \
+    pip install pep8 pylint
+
 # --- Set up user ---
 
 # set user

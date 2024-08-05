@@ -1,3 +1,10 @@
+packages/build
+packages/install
+packages/log
+**/.cache
+**/compile_commands.json
+ros2_humble
+
 .bash_history
 .config
 .gitconfig
@@ -5,6 +12,3 @@
 .ros
 .ssh
 .vscode-server
-
-ros2_humble
-compile_commands.json
