@@ -1,5 +1,5 @@
 ARG VARIANT=ubuntu-22.04
-FROM mcr.microsoft.com/devcontainers/base:ubuntu-${VARIANT}
+FROM mcr.microsoft.com/devcontainers/base:${VARIANT}
 
 # --- Configure environment ---
 
@@ -72,9 +72,12 @@ USER vscode
 RUN echo ". /home/vscode/ros2_humble/install/setup.sh" >> ~/.bashrc
 
 # configure environment variables
-ENV DISPLAY=unix:1
-ENV ROS_LOCALHOST_ONLY=0
-ENV ROS_DOMAIN_ID=0
+ARG DISPLAY
+ARG ROS_LOCALHOST_ONLY
+ARG ROS_DOMAIN_ID
+ENV DISPLAY=${DISPLAY}
+ENV ROS_LOCALHOST_ONLY=${ROS_LOCALHOST_ONLY:-0}
+ENV ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
 
 # --- Set up entrypoint ---
 

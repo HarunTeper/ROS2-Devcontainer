@@ -5,19 +5,24 @@
 	"build": {
 		"context": "..",
 		"dockerfile": "Dockerfile",
-		"args": { "VARIANT": "jammy" }
+		"args": {
+			"VARIANT": "jammy",
+			"ROS_DOMAIN_ID": "0",
+			"ROS_LOCALHOST_ONLY": "1"
+		}
 	},
-
 	// Configure container user
 	"remoteUser": "vscode",
-
 	// Configure workspace mount point
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/workspace,type=bind,consistency=cached",
 	"workspaceFolder": "/home/vscode/workspace",
-
 	// Configure runtime settings
-	"runArgs": ["--network=host"],
-
+	"runArgs": [
+		"--privileged",
+		"--network=host",
+		"-e",
+		"DISPLAY"
+	],
 	// Configure VS Code extensions
 	"customizations": {
 		"vscode": {
@@ -29,7 +34,9 @@
 				"donjayamanne.python-extension-pack",
 				"donjayamanne.python-environment-manager",
 				"ms-azuretools.vscode-docker",
-				"ms-python.autopep8"
+				"ms-python.autopep8",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
 			]
 		}
 	}
